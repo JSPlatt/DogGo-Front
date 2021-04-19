@@ -25,26 +25,31 @@ function Header() {
                     />
                 <div className="header_input">
                         <SearchIcon />
-                        <input type="text"/>
+                        <input placeholder="Search DogGO" type="text"/>
                 </div>
             </div>
 
             <div className="header_center">
-                <div className="header_option">
+                <div className="header_option header__option--active">
                     <HomeIcon fontSize="large"/>
                 </div>
+
                 <div className="header_option">
                     <FlagIcon fontSize="large"/>
                 </div>
+
                 <div className="header_option">
                     <SubscriptionsIcon fontSize="large"/>
                 </div>
+
                 <div className="header_option">
                     <StorefrontIcon fontSize="large"/>
                 </div>
+
                 <div className="header_option">
                     <SupervisedUserCircleIcon fontSize="large"/>
                 </div>
+                
             </div>
             
             <div className="header_right">
