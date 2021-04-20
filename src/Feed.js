@@ -1,33 +1,35 @@
-import React from 'react'
-import "./Feed.css"
-import MessageSender from './MessageSender'
-import Post from './Post'
-import StoryReel from './StoryReel'
+import React, { useEffect, useState } from 'react';
+import './Feed.css';
+import MessageSender from './MessageSender';
+import Post from './Post';
+import db from './firebase'
+import StoryReel from './StoryReel';
 
-function Feed () {
-    return (
-        <div className='feed'>
-            <StoryReel />
-            <MessageSender />
-        {/* Needs to be updated For Code */}
-            <Post 
-                profilePic="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*"
-                message="test test test"
-                timestamp="timestamp"
-                username="jplatt"
-                image="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/dog_cool_summer_slideshow/1800x1200_dog_cool_summer_other.jpg"
-            />
-            <Post 
-            profilePic="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*"
-            message="Am I working"
-            timestamp="timestamp"
-            username="jplatt"
-            />
-            <Post />
-            <Post />
+function Feed() {
+  const [posts, setPosts] = useState([]);
 
-        </div>
-    )
+  useEffect(() => {
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => ({ id: doc.id, data: doc.data()})))
+    })
+  }, [])
+
+  return (
+    <div className="feed">
+      <StoryReel />
+      <MessageSender />
+      {posts.map(post => (
+      <Post
+        key={post.data.id}
+        profilePic={post.data.profilePic}
+        message={post.data.message}
+        timestamp={post.data.timestamp}
+        username={post.data.username}
+        image={post.data.image}
+      />
+      ))}
+    </div>
+  );
 }
 
-export default Feed
+export default Feed;
