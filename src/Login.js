@@ -2,13 +2,12 @@ import { Button } from '@material-ui/core'
 import React from 'react'
 import "./Login.css"
 
+
 function Login() {
-
     const signIn = () => {
-        //sign in stuff
-    }
 
-    return(
+    }
+    return (
         <div className="login">
             <div className>
                 <img 
