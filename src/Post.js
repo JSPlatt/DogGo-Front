@@ -6,6 +6,8 @@ import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import NearMeIcon from '@material-ui/icons/NearMe';
 import { ExpandMoreOutlined } from "@material-ui/icons"
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import AddIcon from '@material-ui/icons/Add';
 
 function Post({profilePic, image, username, timestamp, message}) {
     return (
@@ -43,8 +45,10 @@ function Post({profilePic, image, username, timestamp, message}) {
                     <p>Share</p>
                 </div>
                 <div className="post_option" >
-                    <AccountCircleIcon />
-                    <ExpandMoreOutlined />
+                    <HighlightOffIcon />
+                    <p>Delete</p>
+                    {/* <AccountCircleIcon />
+                    <ExpandMoreOutlined /> */}
                 </div>
           </div>
 
